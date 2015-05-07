@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Search {% endblock %}
+{% block head %}Search {% endblock %}
+{% block content %}
+<div id="search-results">
+	{% if show_results %}
+		{% include 'artist_list.html' %}
+		{% include 'album_list.html' %}
+		{% include 'song_list.html' %}
+		{% include 'musician_list.html' %}
+	{% endif %}
+</div>
+{% endblock %}

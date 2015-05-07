@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>PAKDD</title>
+
+  <!-- Bootstrap -->
+  <link href="/static/css/bootstrap.css" rel="stylesheet">
+
+
+  </head>
+  <body >
+    <div class="navbar navbar-inverse" >
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/rotten/" font="">PAKDD</a>
+      </div>
+      <div class="navbar-collapse collapse navbar-inverse-collapse">
+        <form class="navbar-form navbar-right" method="GET" action="/">
+          <input type="text" class="form-control col-lg-8" placeholder="Search" name="query" id="searchBox">
+        </form>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4" >
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form class="form-horizontal" method ="get" action="query">
+            <fieldset>
+              <legend>Option</legend>
+              <div class="form-group">
+                <label class="col-lg-4 control-label">Pick a prediction model</label>
+                <div class="col-lg-6">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                      Heikki U.
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                      Gregoire L.
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                      Shize Su
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="select" class="col-lg-4 control-label">Select a Model number</label>
+                <div class="col-lg-6">
+                  <select class="form-control" name="model" id="select">
+                    <option>M1</option>
+                    <option>M2</option>
+                    <option>M3</option>
+                    <option>M4</option>
+                    <option>M7</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="select" class="col-lg-4 control-label">Select a Part number</label>
+                <div class="col-lg-6">
+                  <select class="form-control" name="part" id="select">
+                    <option>P1</option>
+                    <option>P2</option>
+                    <option>P3</option>
+                    <option>P4</option>
+                    <option>P5</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                  <button type="reset" class="btn btn-default">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Project</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8 col-md-8" id="News">
+        <div class="panel panel-default">
+            <div class="panel-body">
+            <img src="http://i.imgur.com/ulSHzbW.png" style="max-width:100%;" >
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+    
+    </script>
+    </script
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  </body>
+  </html>

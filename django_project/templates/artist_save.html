@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}{{create_or_edit}} an artist{% endblock %}
+{% block head %}{{create_or_edit}} an artist{% endblock %}
+{% block content %}
+<form method="post" action=".">{% csrf_token %}
+
+<p>
+  <div class="col-lg-10">
+  <label for="id_name">Artist Name:</label> 
+  <input id="id_name" name="name" type="text" class="form-control"/>
+</div>
+</p>
+<p>
+  <div class="col-lg-10">
+  <label for="id_image">Image:</label> 
+  <input id="id_image" name="image" type="text" class="form-control"/>
+</div>
+</p>
+<p>
+  <div class="col-lg-10">
+  <label for="id_date">Debut (YYYY-MM-DD):</label> 
+  <input id="id_date" name="date" type="text" class="form-control"/></p>
+</div>
+<p>
+  <div class="col-lg-10">
+  <label for="id_status">Status:</label> 
+  <input id="id_status" name="status" type="text" class="form-control"/></p>
+</div>
+<p>
+  <div class="col-lg-10">
+  <label for="id_bio">Bio:</label> 
+  <textarea class="form-control" rows="10" id="id_bio" name="bio"></textarea>
+</div>
+</p>
+<div class="col-lg-10 col-lg-offset-2">
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
+<!-- <input type="submit" value="Save" /> -->
+</form>
+{% endblock %}

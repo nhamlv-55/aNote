@@ -1,0 +1,40 @@
+ {% extends "base.html" %}
+ {% block title %}{{ song_name }}{% endblock %}
+ {% block head %}{{ song_name }}{% endblock %}
+ {% block content %}
+ 	<div id="Info">
+		<h2>Album</h2>
+		<a href="/album/{{ album.AlbumId}}" class="title">{{ album.AlbumName }}</a>
+		<h2>Contributing artist</h2>
+		<a href="/artist/{{ contributing_artist.ArtistId}}" class="title">{{ contributing_artist.ArtistName }}</a>
+		<p>{{ artist.Status}}</p>
+	</div>
+
+	<div id = "Video">
+	{% if videos %}
+	 	<h2>Videos</h2>
+	 	<iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/{{demo_vid}}" allowfullscreen frameborder="0">
+		</iframe>
+		 <ul>
+		 	{% for video in videos %}
+			 	<li><a href="{{video.Url}}">
+			 		{{ video.Type }}</a></li>
+		 		{% endfor %}
+		 </ul>
+	{% else %}
+	 	<p>No videos found.</p>
+	{% endif %}
+	</div>
+
+	{% if tabs %}
+	 	<h2>Scoresheets</h2>
+		 <ul>
+		 	{% for tab in tabs %}
+			 	<li><a href="/tab/{{tab.ScoreId}}">
+			 		Version {{ tab.Version }} for {{tab.Instrument}}</a></li>
+		 		{% endfor %}
+		 </ul>
+	{% else %}
+	 	<p>No scoresheets found.</p>
+	{% endif %}
+{% endblock %}

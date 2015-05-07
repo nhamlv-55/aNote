@@ -1,0 +1,27 @@
+
+{% extends "base.html" %}
+{% block title %}{{ username }}{% endblock %}
+{% block head %}{{ username }}'s favorite{% endblock %}
+{% block content %}
+	{% include "bookmark_list.html" %}
+{% endblock %}
+
+<!-- <html>
+<head>
+	<title>Elmusico Bookmark - User: {{ username }}</title>
+</head>
+<body>
+	<h1>Bookmarks for {{ username }}</h1>
+	{% if ScoreSheetList %}
+	<ul>
+		{% for aScoreSheet in ScoreSheetList %}
+		<li><a href="{{ aScoreSheet.Scoresheet.Url }}">
+			{{ aScoreSheet.FavoriteId }}</a></li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		<p>No bookmarks found.</p>
+		{% endif %}
+	</body>
+</html>
+ -->

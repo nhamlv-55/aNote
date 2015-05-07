@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Search {% endblock %}
+{% block head %}Search {% endblock %}
+{% block content %}
+<form id="search-form" method="get" action=".">
+	{{ form.as_p }}
+	<input type="submit" value="search" />
+</form>
+<div id="search-results">
+	ba da da da
+	{% if show_results %}
+	weqweqweqwe
+		{% for artist2 in artist2s %}
+		<li>
+		<a href="/relation/{{artist_id1}}_{{ artist2.ArtistId }}" class="title">
+			{{ artist2.ArtistName }}</a>
+		</li>
+		{% endfor %}
+			{% endif %}
+</div>
+{% endblock %}

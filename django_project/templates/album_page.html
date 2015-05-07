@@ -1,0 +1,31 @@
+ {% extends "base.html" %}
+ {% block title %}{{ album_name }}{% endblock %}
+ {% block head %}{{ album_name }}{% endblock %}
+ {% block content %}
+ 	<div id="Info">
+		<h3>by {{album.ContributingArtists}}</h3>
+		<h2>Release date</h2>
+		<p>{{ album.ReleaseDate}}</p>
+		<h2>Label</h2>
+		<p>{{ album.Label}}</p>
+		<h2>Genre</h2>
+		<p>{{ album.Genre}}</p>
+	</div>
+		<h2>Tracklist</h2>
+	 {% if songs %}
+		 <ul>
+		 	{% for song in songs %}
+			 	<li><a href="/song/{{ song.SongId }}">
+			 		{{ song.SongName }}</a></li>
+		 		{% endfor %}
+		 </ul>
+	{% else %}
+	 	<p>No songs found.</p>
+	{% endif %}
+	{% if user.is_authenticated %}
+	<a href="/create_album/?album_id={{ album.AlbumId }}"
+		class="edit">[edit]</a>
+	<a href="/create_song_step2/{{ album.AlbumId }}"
+		class="add songs">[add songs]</a>
+	{% endif %}
+{% endblock %}

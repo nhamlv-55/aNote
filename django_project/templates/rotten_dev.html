@@ -1,0 +1,73 @@
+
+{% extends "base_rotten.html" %}
+{% block content %}
+
+<style>
+#MovieInfo{height: 100%}
+#Show{height: 100%}
+</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#MovieInfo").hide()
+	$("a[id|='similar']").click(function(){
+		var id=$(this).attr("movid")
+		$("#Show").load("/rotten_dev/similar/"+id).show()
+	});
+});
+</script>
+
+<audio controls>
+  <source src="http://stream2.mp3.zdn.vn/fsfsdfdsfdserwrwq3/1f0e3116edde256d5ceadb78a7b7ef3a/54d3ed2f/2014/10/15/c/e/ce8da07bbc476b6984ac7dd26a247655.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+<div class="col-md-3 col-lg-3">
+	<div class="panel panel-default">	
+		<div class="panel-body">
+			<div class="form-group">
+				<form class="form-horizontal" id="search-form" method="get" action=".">
+					<fieldset>
+					<!-- <div class ="col-md-9 col-lg-9 col-xs-9"> -->
+					<input class="form-control" id="id_query" name="query" type="text" placeholder="Enter anything to search">
+					<!-- </div> -->
+					<!-- <div class = "col-md-3 col-lg-3 col-xs-3"> -->
+					<br>
+					<input class="btn btn-primary" type="submit" value="search">
+					<!-- </div> -->
+					</fieldset>
+				</form>
+			</div>
+			<div id="result">
+<!-- 			<ol> -->
+				{% for r in results %}
+					<p><a href="#" id="similar" movid="{{r.0}}">{{r.1}}</a></p>
+				{% endfor %}
+			<!-- </ol>     -->
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-md-6 col-lg-6">
+	<div class="panel panel-default">
+		<div class="panel-body" id="Show">			
+			<h4>Similar movies</h4>
+		</div>
+	</div>
+</div>
+<div class="col-md-3 col-lg-3">
+	<div class="panel panel-default" id = "MovieInfo">
+		<div class="panel-body">
+			<div class="col-md-3 col-lg-3 col-xs-3" id="Pic">
+			</div>
+			<div class="col-md-9 col-lg-9 col-xs-9" id="Title">
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <a href="/rotten/download/">Download</a>
+***********************
+{{content}} -->
+
+{% endblock %}

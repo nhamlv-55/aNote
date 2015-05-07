@@ -1,0 +1,137 @@
+{% extends "chin_temp/base_chin.html" %}
+{% block content %}
+<script type="text/javascript" src="/static/d3/d3.v3.min.js"></script>
+<script type="text/javascript" src="/static/js/d3-tip.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<style type="text/css">
+	.d3-tip {
+	  line-height: 1;
+	  padding: 12px;
+	  font-size: 14px;
+	  background: rgba(0, 0, 0, 0.8);
+	  color: #fff;
+	  border-radius: 2px;
+	}
+
+	/* Creates a small triangle extender for the tooltip */
+	.d3-tip:after {
+	  box-sizing: border-box;
+	  display: inline;
+	  
+	  width: 100%;
+	  line-height: 1;
+	  color: rgba(0, 0, 0, 0.8);
+	  content: "\25BC";
+	  position: absolute;
+	  text-align: center;
+	}
+
+	/* Style northward tooltips differently */
+	.d3-tip.n:after {
+	  margin: -1px 0 0 0;
+	  top: 100%;
+	  left: 0;
+	}
+</style>
+	
+<script>
+	// var lyrics = new Array();
+$.get('/static/temp_files/chungking.txt', callback)
+
+var known = "{{temp}}"
+var code = []
+var width = $("#Map").width()
+var height = 600
+var cell_size = 10
+var dot_size = 3
+var space_size = 3
+var max_item = Math.floor(width/(cell_size+space_size))
+var max_tooltip = 2
+var tip = d3.tip()
+			.attr('class', 'd3-tip')
+			.offset([-10, 0])
+			.html(function(d, i){
+				// // console.log(code[i])
+				result = ""
+				for(pos=i-max_tooltip; pos<i+max_tooltip+1; pos++){
+					// console.log(pos)
+					if(pos>=0&&pos<code.length){
+						if(code[pos]['var']==1){
+							result+="<span style='color:red'>"
+							result+=code[pos]['char']
+							result+="</span>"
+						}
+						else{
+							result+=code[pos]['char']
+						}
+					}
+				}
+				return result
+			})
+
+function callback(data){
+	var lyrics = data.split("\n")
+	// console.log(data[0][0])
+	lyrics.forEach(function(sentence, index){
+		for(i=0;i<sentence.length-1;i++){
+			if(known.indexOf(sentence[i]) ==-1){
+				code.push({'char': sentence[i], 'var': 0})
+			}else{
+				code.push({'char': sentence[i], 'var': 1})
+			}
+		}
+		code.push({'char': '.', 'var': 2})
+	})
+	// // console.log(code)
+	draw(code, known)
+	
+}
+
+// console.log("{{temp}}")
+
+function draw(data ){
+	var svg = d3.select("#Map").append("svg")
+	.attr("width", width)
+	.attr("height", height)
+
+	svg.call(tip)
+	// console.log(data)
+	var node = svg.selectAll("g")
+	.data(data)
+	.enter().append("g")
+
+	node.append("rect")
+		.attr("transform", function(d, i){
+			var move_vertical = 0
+			// console.log(i, max_item, i%max_item)
+			move_horizontal = (i%max_item)*(cell_size + space_size)
+			move_vertical = Math.floor(i/max_item)*(cell_size+space_size)
+			return "translate(" + move_horizontal + ","+move_vertical+")"})
+		.attr("width", function(d){
+			if(d.var==2){
+				return dot_size
+			}else{
+				return cell_size
+			}
+		})
+		.attr("height", function(d){
+			if(d.var==2){
+				return dot_size
+			}else{
+				return cell_size
+			}
+		})
+		.attr("fill", function(d){
+			if(d.var==1){
+				return "red" 
+			}else if(d.var==0){
+				return "grey"
+			}
+		})
+		.on('mouseover', tip.show)
+		.on('mouseout', tip.hide)
+}
+
+</script>
+
+{% endblock %}

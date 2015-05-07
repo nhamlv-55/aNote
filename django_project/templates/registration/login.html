@@ -1,0 +1,58 @@
+
+{% extends "base.html" %}
+{% block title %}User Login{% endblock %}
+{% block head %}User Login{% endblock %}
+{% block content %}
+{% if form.errors %}
+<p>
+	<div class="col-lg-10">
+		<div class="alert alert-dismissable alert-danger">
+			<button type="button" class="close" data-dismiss="alert">×</button>
+			<h4>Oops!</h4>
+			<p>Wrong password or username. Or both. Better check it again yo!</p>
+		</div>
+	</div>
+</p>
+{% endif %}
+<form method="post" action="."> {% csrf_token %}
+	<p>
+		<label for="id_username" class="col-lg-2 control-label">Username:</label>
+		<div class="col-lg-10">
+			<input id="id_username" name="username" type="text" class="form-control"/>
+		</div>
+	</p>
+	<p>
+		<label for="id_password" class="col-lg-2 control-label">Password:</label>
+		<div class="col-lg-10">
+			<input id="id_username" name="password" type="password" class="form-control"/>
+		</div>
+	</p>
+	<div class="col-lg-10 col-lg-offset-2">
+		<button type="submit" class="btn btn-primary">Login</button>
+	</div>
+	<!-- <input type="submit" value="login" /> -->
+	<input type="hidden" name="next" value="/" />
+</form>
+{% endblock %}
+
+
+<!-- <html>
+<head>
+	<title>Elmusico - User Login</title>
+</head>
+<body>
+	<h1>User Login</h1>
+	{% if form.errors %}
+	<p>Your username and password didn't match.
+		Please try again.</p>
+		{% endif %}
+		<form method="post" action="."> {% csrf_token %}
+			<p><label for="id_username">Username:</label>
+				{{ form.username }}</p>
+			<p><label for="id_password">Password:</label>
+				{{ form.password }}</p>
+			<input type="hidden" name="next" value="/" />
+			<input type="submit" value="login" />
+		</form>
+	</body>
+</html> -->

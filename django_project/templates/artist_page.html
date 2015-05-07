@@ -1,0 +1,59 @@
+ {% extends "base.html" %}
+ {% block title %}{{ artist_name }}{% endblock %}
+ {% block head %}{{ artist_name }}{% endblock %}
+ {% block content %}
+ 	<div id="Image" class="col-lg-10">
+ 		<img src= {{ artist.Image }} height="300" >
+ 	</div>
+ 	<div id="Info" class="col-lg-10">
+ 		<h3>{{ artist.ArtistName}}</h3>
+		<h4>Debute date</h4>
+		<p>{{ artist.Date}}</p>
+		<h4>Current status</h4>
+		<p>{{ artist.Status}}</p>
+		<h4>Members</h4>
+		<!-- if found related artist in column artist2 -->
+		{% if members2 %}
+			da hell??
+			 <ul>
+			 	{% for member in members2 %}
+				 	<li><a href="/artist/{{ member.ArtistId2_id}}">
+				 		{{ member.ArtistId2.ArtistName }}</a>
+				 	</li>
+			 		{% endfor %}
+			 </ul>
+			 
+		{% else %}
+		{% endif %}
+		{% if user.is_authenticated %}
+			 <a href="/search_member/{{ artist.ArtistId }}" class="btn btn-primary">+Member</a>
+			 {% endif %}
+		<h4>Bio</h4>
+		<p>{{ artist.Bio}}</p>
+	</div>
+	<div id = "Discography" class="col-lg-10">
+		<h4>Discography</h4>
+		{% if albums %}
+		<ul>
+		 	{% for album in albums %}
+			 	<li><a href="/album/{{ album.AlbumId }}">
+			 		{{ album.AlbumName }}</a></li>
+		 		{% endfor %}
+		 </ul>
+	{% else %}
+		<p>There is no album added yet! Please contribute</p>
+	{% endif %}
+	{% if user.is_authenticated %}
+	<a href="/create_artist/?artist_id={{ artist.ArtistId }}"
+		class="btn btn-primary">+Album</a>
+	{% endif %}
+	</div>	
+
+	
+	<div id = "buttons" class="col-lg-10">
+		{% if user.is_authenticated %}
+		<a href="/create_artist/?artist_id={{ artist.ArtistId }}"
+			class="btn btn-warning">Edit {{ artist.ArtistName}}</a>
+		{% endif %}
+	</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+{% block head %}Welcome to ElMusico{% endblock %}
+{% block content %}
+	<!-- <h1> The website is under some heavy modification. It is still functioning, but expect some major changes soon!</h1>  -->
+	{% if user.username %}
+		<p>	Welcome {{ user.username }}!
+			Here you can start your musician way!
+		</p>
+	{% else %}
+		<p>
+			Welcome anonymous user!
+			Why don't you 
+			<a href="/register/">register?</a>
+		</p>
+		<p>
+			Already did? Oops! Why don't you 
+			<a href="/login/">login</a>
+			then, buddy?
+		</p>
+	{% endif %}
+		
+{% endblock %}

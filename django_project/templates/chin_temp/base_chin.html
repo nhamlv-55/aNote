@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>The more you know</title>
+
+  <!-- Bootstrap -->
+  <link href="/static/css/bootstrap.css" rel="stylesheet">
+
+  <script type="text/javascript">
+    function zip () {
+
+      var textbox = document.getElementById("textArea")
+
+      textbox.value = textbox.value.replace(/(\r\n|\n|\r)/gm,"");
+      return t
+    }
+  </script>
+  </head>
+  <body >
+    <div class="navbar navbar-inverse" >
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/rotten/" font="">The more you know</a>
+      </div>
+      <div class="navbar-collapse collapse navbar-inverse-collapse">
+        <form class="navbar-form navbar-right" method="GET" action="/">
+          <input type="text" class="form-control col-lg-8" placeholder="Search" name="query" id="searchBox">
+        </form>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4" >
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form onSubmit = "return zip()" class="form-horizontal" method ="get" action="/chin/">
+            <fieldset>
+              <legend>Option</legend>
+              <div class="form-group">
+                <label for="textArea" class="col-lg-2 control-label">Textarea</label>
+                <div class="col-lg-10">
+                  <textarea class="form-control" rows="3" id="textArea" name="query"></textarea>
+                  <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                  <button type="submit" class="btn btn-primary">The more you know</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8 col-md-8" id="News">
+        <div class="panel panel-default">
+            <div class="panel-body" id="Map">
+              {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+    
+    </script>
+    </script
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/js/bootstrap.min.js"></script>
+
+  </body>
+  </html>

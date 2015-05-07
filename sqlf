@@ -1,0 +1,10 @@
+begin;
+drop table elmusico_member;
+drop table elmusico_favorite;
+drop table elmusico_scoresheet;
+drop table elmusico_video;
+drop table elmusico_song;
+drop table elmusico_album;
+drop table elmusico_artist;
+drop table elmusico_musician;
+commit;
